@@ -1,11 +1,15 @@
 #!/bin/bash
 
 FORCE=0
+NOCOPY=0
 
 while getopts "f" OPTION; do
   case $OPTION in
     f)
       FORCE=1
+      ;;
+    n)
+      NOCOPY=1
       ;;
   esac
 done 
@@ -13,14 +17,16 @@ done
 ## Check if there are seeded paks
 cd $PAKSEEDDIR
 
-echo "Checking for seeded Paks"
-seeded=($(ls $PAKSEEDDIR | wc -l))
-if [ $seeded -gt 0 ]; then
-  echo "Found $seeded Paks"
-  cp $PAKSEEDDIR/* $PAKSDIR
+if [ $NOCOPY = 0 ]; then
+  echo "Checking for seeded Paks"  
+  seeded=($(ls $PAKSEEDDIR | wc -l))  
+  if [ $seeded -gt 0 ]; then  
+    echo "Found $seeded Paks"  
+    cp $PAKSEEDDIR/* $PAKSDIR  
+  fi  
+  echo "Done"  
+  echo ""  
 fi
-echo "Done"
-echo ""
 
 ## Fetch Paks into Paks folder
 cd $PAKSDIR
