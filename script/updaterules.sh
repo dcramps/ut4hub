@@ -1,1 +1,1 @@
-curl -H "Content-type: application/json" 'https://raw.githubusercontent.com/dcramps/UTPugsRuleset/master/DefaultRules_disable.json' > /hub/server/LinuxServer/UnrealTournament/Saved/Config/Rulesets/DefaultRules_disable.json
+curl -H "Content-type: application/json" 'https://raw.githubusercontent.com/dcramps/UTPugsRuleset/master/DefaultRules_disable.json' > $RULESJSON

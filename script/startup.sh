@@ -1,14 +1,14 @@
 #!/bin/bash
-cd /hub
-
-echo "Making links"
-./script/makelinks.sh
+cd $HUBROOT
 
 echo "Updating paks"
-#./script/fetch.sh
+./script/fetch.sh
 
 echo "Updating rules"
 ./script/updaterules.sh
+
+echo "Setting config"
+./script/setconfig.sh
 
 echo "Launching hub"
 ./script/runhub.sh

@@ -10,9 +10,20 @@ while getopts "f" OPTION; do
   esac
 done 
 
+## Check if there are seeded paks
+cd $PAKSEEDDIR
+
+echo "Checking for seeded Paks"
+seeded=($(ls $PAKSEEDDIR | wc -l))
+if [ $seeded -gt 0 ]; then
+  echo "Found $seeded Paks"
+  cp $PAKSEEDDIR/* $PAKSDIR
+fi
+echo "Done"
+echo ""
 
 ## Fetch Paks into Paks folder
-cd /hub/paks
+cd $PAKSDIR
 
 echo -en "\rFetching file list"
 response=($(wget -SN "https://ut4pugs.us/media/redirect.txt" 2>&1 | grep "HTTP/" | awk '{print $2}'))
@@ -40,20 +51,17 @@ do
 done
 
 ## Update Game.ini in Config folder
-cd /hub/config
-
-sed -i "/UnrealTournament.UTBaseGameMode/d" Game.ini
-sed -i "/RedirectReferences/d" Game.ini
+echo ""
+echo "Writing redirect config"
+sed -i "/UnrealTournament.UTBaseGameMode/d" $GAMECFG
+sed -i "/RedirectReferences/d" $GAMECFG
 
 echo '[/Script/UnrealTournament.UTBaseGameMode]' > Game.ini.tmp
-cat /hub/paks/redirect.txt >> Game.ini.tmp
-cat Game.ini >> Game.ini.tmp
-cat Game.ini.tmp > Game.ini
+cat $PAKSDIR/redirect.txt >> Game.ini.tmp
+cat $GAMECFG >> Game.ini.tmp
+cat Game.ini.tmp > $GAMECFG
 rm Game.ini.tmp
-mv Game.ini /hub/server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer
-ln -s /hub/server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini Game.ini
 
 ## Done!
 
-echo -en "\rDone!                           "
 echo ""
