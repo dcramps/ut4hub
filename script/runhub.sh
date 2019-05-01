@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../server/LinuxServer/Engine/Binaries/Linux
+cd /hub/server/LinuxServer/Engine/Binaries/Linux
 
 startHub() {
   ./UE4Server-Linux-Shipping UnrealTournament UT-Entry?game=lobby -log

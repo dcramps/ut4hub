@@ -1,22 +1,22 @@
 #!/bin/bash
 
-FORCE="false"
+FORCE=0
 
 while getopts "f" OPTION; do
   case $OPTION in
     f)
-      FORCE="true"
+      FORCE=1
       ;;
   esac
 done 
 
 
 ## Fetch Paks into Paks folder
-cd ../paks
+cd /hub/paks
 
 echo -en "\rFetching file list"
 response=($(wget -SN "https://ut4pugs.us/media/redirect.txt" 2>&1 | grep "HTTP/" | awk '{print $2}'))
-if [ $FORCE = "false" ] && [ $response -eq 304 ]; then
+if [ $FORCE = 1 ] && [ $response -eq 304 ]; then
   echo ""
   echo "No new paks"
   exit 0
@@ -40,18 +40,18 @@ do
 done
 
 ## Update Game.ini in Config folder
-cd ../config
+cd /hub/config
 
 sed -i "/UnrealTournament.UTBaseGameMode/d" Game.ini
 sed -i "/RedirectReferences/d" Game.ini
 
 echo '[/Script/UnrealTournament.UTBaseGameMode]' > Game.ini.tmp
-cat ../paks/redirect.txt >> Game.ini.tmp
+cat /hub/paks/redirect.txt >> Game.ini.tmp
 cat Game.ini >> Game.ini.tmp
 cat Game.ini.tmp > Game.ini
 rm Game.ini.tmp
-mv Game.ini ../server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer
-ln -s ../server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini Game.ini
+mv Game.ini /hub/server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer
+ln -s /hub/server/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/Game.ini Game.ini
 
 ## Done!
 
