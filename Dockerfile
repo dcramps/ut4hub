@@ -10,7 +10,7 @@ ENV SERVERNAME="UT4 Hub"
 ENV SERVERMOTD="A UT4 Hub!"
 ENV SERVERRCON="asdf1234"
 ENV HUBPACKAGE=UnrealTournament-Server-XAN-3525360-Linux.zip
-ADD https://dc.wtf/ut/UnrealTournament-Server-XAN-3525360-Linux.zip /hub/
+ADD https://s3.amazonaws.com/unrealtournament/ShippedBuilds/%2B%2BUT%2BRelease-Next-CL-3525360/UnrealTournament-Server-XAN-3525360-Linux.zip /hub/
 RUN apt-get update && \
     apt-get install -y wget && \
     apt-get install -y curl && \
