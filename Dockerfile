@@ -12,9 +12,9 @@ ENV SERVERRCON="asdf1234"
 ENV HUBPACKAGE=UnrealTournament-Server-XAN-3525360-Linux.zip
 ADD https://s3.amazonaws.com/unrealtournament/ShippedBuilds/%2B%2BUT%2BRelease-Next-CL-3525360/UnrealTournament-Server-XAN-3525360-Linux.zip /hub/
 RUN apt-get update && \
-    apt-get install -y wget && \
-    apt-get install -y curl && \
-    apt-get install -y unzip
+    apt-get install -y unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 COPY script /hub/script/
 RUN /hub/script/root.sh
 RUN groupadd -g 999 hubadmin && \ 
