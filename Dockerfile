@@ -14,12 +14,12 @@ ADD https://s3.amazonaws.com/unrealtournament/ShippedBuilds/%2B%2BUT%2BRelease-N
 RUN apt-get update && \
     apt-get install -y wget && \
     apt-get install -y curl && \
-    apt-get install -y unzip && \
+    apt-get install -y unzip
 COPY script /hub/script/
 RUN /hub/script/root.sh
 RUN groupadd -g 999 hubadmin && \ 
     useradd -r -u 999 -g hubadmin hubadmin && \
-    chown -R hubadmin /hub && \
+    chown -R hubadmin /hub
 USER hubadmin
 RUN /hub/script/hubadmin.sh
 WORKDIR /hub
