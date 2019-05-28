@@ -7,5 +7,4 @@ startHub() {
 }
 
 # Acts as a watchdog - as soon as the server process dies, this will restart it.
-#while :; do startHub; done
-startHub;
+while :; do startHub; done

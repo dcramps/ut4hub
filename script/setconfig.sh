@@ -5,7 +5,7 @@ mkdir -p $CONFIGDIR
 # Base Game.ini
 echo [/Script/UnrealTournament.UTGameState] >> $GAMECFG
 echo ServerMOTD= >> $GAMECFG
-echo ServerName=Chicago UT+ UTPUGS >> $GAMECFG
+echo ServerName= >> $GAMECFG
 
 # Base Server.ini
 
