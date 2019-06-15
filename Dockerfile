@@ -10,6 +10,7 @@ ENV PAKSDIR=$HUBROOT/server/LinuxServer/UnrealTournament/Content/Paks
 ENV SERVERNAME="UT4 Hub"
 ENV SERVERMOTD="A UT4 Hub!"
 ENV SERVERRCON="asdf1234"
+ENV SERVERTICKRATE=90
 ENV HUBPACKAGE=UnrealTournament-Server-XAN-3525360-Linux.zip
 ADD https://s3.amazonaws.com/unrealtournament/ShippedBuilds/%2B%2BUT%2BRelease-Next-CL-3525360/UnrealTournament-Server-XAN-3525360-Linux.zip /hub/
 RUN apt-get update && \
