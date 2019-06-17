@@ -2,6 +2,9 @@
 
 mkdir -p $CONFIGDIR
 
+rm $GAMECFG
+rm $ENGINECFG
+
 # Base Game.ini
 echo [/Script/UnrealTournament.UTGameState] >> $GAMECFG
 echo ServerMOTD=MOTD >> $GAMECFG
