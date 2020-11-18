@@ -8,9 +8,12 @@ Docker image for a stock install of a UT4 hub
 
 ## Directories
 Create a directory to hold some necessary files to launch the hub:
-`/home/docker/ut4hub/config` 
-`/home/docker/ut4hub/paks`
-`/home/docker/ut4hub/rules`
+
+- `/home/docker/ut4hub/config` 
+- `/home/docker/ut4hub/paks`
+- `/home/docker/ut4hub/rules`
+
+These folders can be anywhere and named anything, as long as they map to `/config`, `/paks`, and `/rules` in the volumes section of the docker-compose.yml file
 
 ### /config
 This directory should contain a file named `reidrect.ini`. The file should contain `RedirectReferences` for whatever redirect server you're using. Example:
