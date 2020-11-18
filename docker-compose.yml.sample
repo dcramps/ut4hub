@@ -4,10 +4,15 @@ services:
     image: ut4hub
     container_name: ut4hub 
     environment:
-      - SERVERMOTD="Message of the day"
-      - SERVERNAME="UT4 Hub"
+      - SERVERNAME="UT4 Docker Hub"
+      - SERVERMOTD="A UT4 Docker Hub!"
       - SERVERRCON="asdf1234"
-      - SERVERTICKRATE=90
+      - SERVERTICKRATE=120
+      - SERVERNETSPEED=24000
+    volumes:
+      - /path/to/paks:/paks
+      - /path/to/rules:/rules
+      - /path/to/config:/config
     ports: 
       - 8000-8500:8000-8500/udp # instance ports start at 8000 and go up from there
       - 14000:14000/udp         # instance comm port
