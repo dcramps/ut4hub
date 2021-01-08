@@ -16,7 +16,7 @@ Create a directory to hold some necessary files to launch the hub:
 These folders can be anywhere and named anything, as long as they map to `/config`, `/paks`, and `/rules` in the volumes section of the docker-compose.yml file
 
 ### /config
-This directory should contain a file named `reidrect.ini`. The file should contain `RedirectReferences` for whatever redirect server you're using. Example:
+This directory should contain a file named `redirect.ini`. The file should contain `RedirectReferences` for whatever redirect server you're using. Example:
 
 ```
 RedirectReferences=(PackageName="DM-Alanis-WindowsNoEditor",PackageURLProtocol="https",PackageURL="example.com/redirect/DM-Alanis-WindowsNoEditor.pak",PackageChecksum="MD5SumOfAlanis")
